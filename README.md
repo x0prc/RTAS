@@ -19,11 +19,11 @@ A system for hiding secret audio messages within another audio stream in real-ti
 
 | Layer | Tools |
 |-------|-------|
-| Audio I/O | PortAudio, PyAudio, ALSA, or RtAudio |
+| Audio I/O | PortAudio, PyAudio, ALSA |
 | Signal Processing | FFT/Inverse FFT (cuFFT / custom CUDA FFT) |
-| GPU Acceleration | CUDA or OpenCL |
-| Optional GUI | PyQt, Dear ImGui, or Web frontend |
-| Dev Language | C++ with CUDA, or Python + Numba/cuPy |
+| GPU Acceleration | CUDA |
+| Optional GUI | PyQt, Dear ImGui |
+| Dev Language | C++ with CUDA|
 
 ## 🛠️ Installation
 
@@ -38,8 +38,8 @@ A system for hiding secret audio messages within another audio stream in real-ti
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/audio-stego-gpu.git
-   cd audio-stego-gpu
+   git clone https://github.com/x0prc/RTAS.git
+   cd RTAS
    ```
 
 2. Create a virtual environment (Python version):

@@ -1,0 +1,7 @@
+audio:
+  sample_rate: 44100
+  alpha: 0.01
+  cover_audio_path: "data/cover.wav"
+  secret_audio_path: "data/secret.wav"
+  stego_audio_path: "data/stego.wav"
+  extracted_audio_path: "data/extracted.wav"

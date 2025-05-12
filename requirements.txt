@@ -1,0 +1,6 @@
+numpy
+scipy
+soundfile
+pycuda
+PyQt6
+yaml

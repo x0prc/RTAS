@@ -5,7 +5,7 @@ A system for hiding secret audio messages within another audio stream in real-ti
 ## 🔍 Core Features
 
 - **Real-time processing**: <10ms embedding/extraction time per chunk
-- **GPU acceleration**: Uses CUDA/OpenCL for parallel audio processing
+- **GPU acceleration**: Uses PyAudio with CUDA for parallel audio processing
 - **Multiple steganography techniques**: 
   - LSB (Least Significant Bit) embedding in time domain
   - Frequency domain embedding using FFT

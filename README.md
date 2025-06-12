@@ -5,8 +5,8 @@ A system for hiding secret audio messages within another audio stream in real-ti
 ## 🔍 Core Features
 
 - **Real-time processing**: <10ms embedding/extraction time per chunk
-- **GPU acceleration**: Uses PyAudio with CUDA for parallel audio processing
-- **Multiple steganography techniques**: 
+- **GPU acceleration**: Uses PyAudio and TorchAudio for parallel audio processing
+- **Multiple steganography techniques**:
   - LSB (Least Significant Bit) embedding in time domain
   - Frequency domain embedding using FFT
   - Echo hiding (optional)
@@ -21,17 +21,16 @@ A system for hiding secret audio messages within another audio stream in real-ti
 |-------|-------|
 | Audio I/O | PortAudio, PyAudio, ALSA |
 | Signal Processing | FFT/Inverse FFT (cuFFT / custom CUDA FFT) |
-| GPU Acceleration | CUDA |
+| GPU Acceleration | PyTorch Tensors |
 | Optional GUI | PyQt, Dear ImGui |
-| Dev Language | C++ with CUDA|
+| Dev Language | C++, Python|
 
 ## 🛠️ Installation
 
 ### Prerequisites
 
-- Python 3.7+ or C++ compiler with CUDA support
+- Python 3.7+ or C++ compiler
 - NVIDIA GPU with CUDA support (or OpenCL compatible GPU)
-- CUDA Toolkit 11.0+ or OpenCL SDK
 - Audio development libraries (PortAudio, etc.)
 
 ### Setup Instructions
@@ -53,16 +52,6 @@ A system for hiding secret audio messages within another audio stream in real-ti
    pip install -r requirements.txt
    ```
 
-4. Install GPU dependencies:
-   - For CUDA: `pip install cupy-cuda11x pycuda`  
-     (Replace `11x` with your CUDA version)
-   - For OpenCL: `pip install pyopencl`
-
-5. Compile CUDA kernels:
-   ```bash
-   cd src/gpu
-   make
-   ```
 
 ## 🚀 Usage
 
@@ -105,7 +94,7 @@ While this system can hide audio data in real-time, it's important to note:
 ## 📚 References and Inspiration
 
 - Audio signal processing techniques from MIT OpenCourseWare
-- NVIDIA cuFFT library: [cuFFT Documentation](https://docs.nvidia.com/cuda/cufft/index.html)
+- Torchaudio Documentation for data processing
 - Papers on audio steganography with spectral modifications
 
 

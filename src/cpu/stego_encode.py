@@ -21,7 +21,10 @@ class Encode:
             hop_length=self.hop_length
         ).to(device)
 
-    def lsb_embed(self, cover: torch.Tensor, secret: torch.Tensor, num_bits: int = 2) -> torch.Tensor:
+    def lsb_embed(self,
+        cover: torch.Tensor,
+        secret: torch.Tensor,
+        num_bits: int = 2) -> torch.Tensor:
         scale_factor = 2**(16 - num_bits)
         secret_quantized = torch.round(secret * scale_factor).short()
         mask = (0xFF << (8 - num_bits)) & 0xFF
@@ -74,14 +77,16 @@ class RealTimeProcessor:
             raise RuntimeError("Audio stream not initialized")
 
         for chunk in self.stream.stream():
-            if chunk is None or len(chunk) == 0:
+            if chunk is None or len(chunk) == 0 or chunk[0] is None:
                 continue
 
             try:
-                cover = chunk[0].to(self.device)
-                secret = secret_audio[:cover.shape[-1]]
+                cover_tensor: torch.Tensor = chunk[0]
+                cover = cover_tensor.to(self.device)
 
+                secret = secret_audio[:cover.shape[-1]]
                 processed: Optional[torch.Tensor] = None
+
                 if self.method == 'lsb':
                     processed = self.stegano.lsb_embed(cover, secret)
                 elif self.method == 'fft':
@@ -89,31 +94,9 @@ class RealTimeProcessor:
 
                 if processed is not None:
                     torchaudio.io.play_audio(processed.cpu(), 16000)
+
             except Exception as e:
                 print(f"Error processing audio chunk: {str(e)}")
-                continue
-
-    def realtime_decode(self) -> None:
-        if self.stream is None:
-            raise RuntimeError("Audio stream not initialized")
-
-        for chunk in self.stream.stream():
-            if chunk is None or len(chunk) == 0:
-                continue
-
-            try:
-                stego = chunk[0].to(self.device)
-                extracted: Optional[torch.Tensor] = None
-
-                if self.method == 'lsb':
-                    extracted = self._lsb_extract(stego)
-                elif self.method == 'fft':
-                    extracted = self._fft_extract(stego)
-
-                if extracted is not None:
-                    torchaudio.io.play_audio(extracted.cpu(), 16000)
-            except Exception as e:
-                print(f"Error decoding audio chunk: {str(e)}")
                 continue
 
     def _lsb_extract(self, stego: torch.Tensor) -> torch.Tensor:

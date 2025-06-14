@@ -1,6 +1,29 @@
-numpy
+# PyTorch
+torch
+torchaudio
+torchvision
+
+# GUI Framework
+PyQt5
+matplotlib
+
+# Audio Processing and I/O
+sounddevice
+librosa
 scipy
-soundfile
-pycuda
-PyQt6
-yaml
+
+# Numerical Computing
+numpy
+panda
+
+# System and Utils
+setuptools
+wheel
+
+# Dev and Test
+pytest
+pytest-cov
+
+# Packaging
+pyinstaller
+cx-freeze

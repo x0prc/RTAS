@@ -1,6 +1,10 @@
+# Python Specific
 **/__pycache__
 **/*.egg-info
 *.pyc
 .pytest_cache/
 .ruff_cache/
 venv/
+
+# macOS Specific
+.DS_Store

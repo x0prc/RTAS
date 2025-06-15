@@ -8,3 +8,8 @@ venv/
 
 # macOS Specific
 .DS_Store
+
+# Package Specific
+RTAS.spec
+build/
+dist/

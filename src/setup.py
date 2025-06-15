@@ -1,14 +1,28 @@
-from setuptools import setup
-from torch.utils.cpp_extension import CUDAExtension, BuildExtension
+from setuptools import setup, find_packages
 
 setup(
-    name='stegano_cuda',
-    ext_modules=[
-        CUDAExtension('stegano_cuda', [
-            'cuda_ops.cu',
-        ])
+    name="rtas",
+    version="0.1",
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    install_requires=[
+        "torch",
+        "torchaudio",
+        "PyQt5",
+        "matplotlib",
+        "sounddevice",
+        "librosa",
+        "scipy",
+        "numpy",
     ],
-    cmdclass={
-        'build_ext': BuildExtension
-    }
+    entry_points={
+        "console_scripts": [
+            "stegano-cli=main:main",
+        ],
+        "gui_scripts": [
+            "stegano-gui=gui.main:main",
+        ]
+    },
+    package_data={},
+    include_package_data=True,
 )

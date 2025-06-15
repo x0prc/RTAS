@@ -15,15 +15,7 @@ A system for hiding secret audio messages within another audio stream in real-ti
 - **Cross-platform**: Works on major operating systems with appropriate GPU support
 
 
-## ⚙️ Technologies Used
-
-| Layer | Tools |
-|-------|-------|
-| Audio I/O | PortAudio, PyAudio, ALSA |
-| Signal Processing | FFT/Inverse FFT (cuFFT / custom CUDA FFT) |
-| GPU Acceleration | PyTorch Tensors |
-| Optional GUI | PyQt, Dear ImGui |
-| Dev Language | C++, Python|
+![diagram](https://github.com/user-attachments/assets/a623f668-1169-4eee-8029-05522780d636)
 
 ## 🛠️ Installation
 
@@ -51,25 +43,6 @@ A system for hiding secret audio messages within another audio stream in real-ti
    ```bash
    pip install -r requirements.txt
    ```
-
-
-## 🚀 Usage
-
-### Basic Usage
-
-```bash
-# Encode a secret audio file into a cover file
-python src/main.py encode --cover path/to/cover.wav --secret path/to/secret.wav --output path/to/output.wav --method fft
-
-# Decode a stego audio file to extract the secret
-python src/main.py decode --stego path/to/stego.wav --output path/to/extracted.wav --method fft
-
-# Real-time encoding with microphone input
-python src/main.py realtime --method fft --mode encode
-
-# Real-time decoding with microphone input
-python src/main.py realtime --method fft --mode decode
-```
 
 ## 📈 Performance
 
